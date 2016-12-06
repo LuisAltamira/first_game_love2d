@@ -7,6 +7,7 @@ player.w = 50
 player.h = 50
 player.speed = 200
 player.speed_bullet = 3000
+player.audio_fire = love.audio.newSource('assets/audio/laser1.wav', 'stream')
 player.bullets = {}
 player.fire = function ()
 	local bullet = {}
@@ -31,11 +32,12 @@ function player:update(dt)
 
  	if love.keyboard.isDown(' ') or love.keyboard.isDown('space') then
  	   	self.fire()
+ 	   	love.audio.play(self.audio_fire)
  	end
 
  	for i,v in ipairs(self.bullets) do
 		v.y = v.y - (self.speed_bullet * dt)
-		if v.y < 50 then
+		if v.y < -15 then
 			table.remove(self.bullets, i)
 		end
 	end
