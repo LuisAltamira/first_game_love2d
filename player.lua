@@ -1,10 +1,12 @@
+-- timer = 30
 player = {}
 player.img = love.graphics.newImage('assets/images/player.png')
 player.x = 50
 player.y = 50
--- player.w = 50
--- player.h = 50
+player.w = 50
+player.h = 50
 player.speed = 200
+player.speed_bullet = 3000
 player.bullets = {}
 player.fire = function ()
 	local bullet = {}
@@ -27,22 +29,22 @@ function player:update(dt)
  		self.y = self.y - (self.speed * dt)
  	end
 
- 	if love.keyboard.isDown(' ') then
- 	    self.fire()
+ 	if love.keyboard.isDown(' ') or love.keyboard.isDown('space') then
+ 	   	self.fire()
  	end
 
  	for i,v in ipairs(self.bullets) do
-		v.y = v.y - (self.speed * dt)
+		v.y = v.y - (self.speed_bullet * dt)
 		if v.y < 50 then
 			table.remove(self.bullets, i)
 		end
 	end
 
-
 end
 
 function player:draw()
 	love.graphics.draw(self.img, self.x, self.y)
+	-- love.graphics.newQuad(self.x, self.y, self.w, self.h, self.img:getDimensions())
 	for i,v in ipairs(self.bullets) do
 		love.graphics.draw(v.img, v.x, v.y)
 	end
