@@ -44,10 +44,10 @@ function player:update(dt)
 
 end
 
-function player:draw()
-	love.graphics.draw(self.img, self.x, self.y)
-	-- love.graphics.newQuad(self.x, self.y, self.w, self.h, self.img:getDimensions())
-	for i,v in ipairs(self.bullets) do
-		love.graphics.draw(v.img, v.x, v.y)
-	end
-end
+-- function player:draw()
+-- 	love.graphics.draw(self.img, self.x, self.y)
+-- 	-- love.graphics.newQuad(self.x, self.y, self.w, self.h, self.img:getDimensions())
+-- 	for i,v in ipairs(self.bullets) do
+-- 		love.graphics.draw(v.img, v.x, v.y)
+-- 	end
+-- end
