@@ -7,9 +7,9 @@ function enemy1.new()
 	self.y = math.random(-20,-5)
 	self.w = 40
 	self.h = 60
-	self.speed = 200
+	self.speed = 100
 	self.img = love.graphics.newImage('assets/images/enemy2.png')
-	-- self.time
+	-- self.time = 100
 	return self
 end
 
@@ -23,7 +23,7 @@ function enemy1:draw()
 end
 
 function enemy1:destroy_limit()
-	if self.y > 100 + self.y then
+	if self.y > love.graphics.getHeight() + self.h then
 		return true
 	else
 		return false
