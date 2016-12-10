@@ -9,11 +9,15 @@ player.speed = 200
 player.speed_bullet = 3000
 player.audio_fire = love.audio.newSource('assets/audio/laser1.wav', 'stream')
 player.bullets = {}
+player.bullet_w = 10
+player.bullet_h = 10
 player.fire = function ()
 	local bullet = {}
 	bullet.img = love.graphics.newImage('assets/images/bullet.png')
 	bullet.x = player.x
 	bullet.y = player.y
+	bullet.w = player.bullet_w
+	bullet.h = player.bullet_h
 	table.insert(player.bullets, bullet)
 end
 
@@ -47,7 +51,7 @@ end
 function player:draw()
 	local quadPlayer = love.graphics.newQuad(0, 0, 80, 80, self.w,self.h)
 	love.graphics.draw(self.img, quadPlayer, self.x, self.y)
-	local quadBullet = love.graphics.newQuad(0, 0, 32, 32, 10, 10)
+	local quadBullet = love.graphics.newQuad(0, 0, 32, 32, self.bullet_w, self.bullet_h)
 	for i,v in ipairs(self.bullets) do
 		love.graphics.draw(v.img, quadBullet, v.x + self.w/2 -5 , v.y)
 	end
