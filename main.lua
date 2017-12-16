@@ -14,7 +14,7 @@ function love.update(dt)
 	player:update(dt)
 	if time_enemies == 0 then
 		table.insert(enemies, enemy1.new())
-		time_enemies = 50
+		time_enemies = 10
 	end
 
 	for i,v in ipairs(enemies) do
@@ -39,18 +39,18 @@ function love.update(dt)
 	for i,v in ipairs(enemies) do
 		if v.dead then
 			table.remove(enemies, i)
-			explosion:update(dt)
-			break
+			
+			
 		end
 		if v.dead then
 			-- table.remove(enemies, i)
-			-- explosion:update(dt)
+			--explosion:update(dt)
 			break
 		end
 	end
 
 	time_enemies = time_enemies - 1
-	
+	--explosion:update(dt)
 end
 
 function love.draw()

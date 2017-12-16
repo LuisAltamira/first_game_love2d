@@ -12,6 +12,7 @@ function enemy1.new()
 	self.img = love.graphics.newImage('assets/images/enemy2.png')
 	self.explosion_frames = {}
 	self.explosion_img = love.graphics.newImage('assets/images/explosion.png')
+	self.g = anim8.newGrid(96, 96, self.explosion_img:getWidth(), self.explosion_img:getHeight())
 	self.explosion_audio = love.audio.newSource('assets/audio/boom9.wav', 'static')
 	self.dead = false
 	return self
